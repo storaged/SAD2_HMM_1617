@@ -100,7 +100,7 @@ text(1:no.symbols,
 
 
 ##POSTERIOR analysis
-oda_char_posterior <- posterior(hmm_char_BW$hmm, oda_znaki[1:1000])
+oda_char_posterior <- posterior(hmm_char_BW$hmm, oda_chars[1:1000])
 oda_char_posterior
 oda_vowel <- oda_znaki[1:1000] %in% samogloski
 oda_vowel_posterior <- oda_char_posterior[2, ] > oda_char_posterior[1, ]
@@ -114,3 +114,5 @@ predictions <- matrix(c(TP, FP, FN, TN), 2)
 rownames(predictions) <- c("r_vowel", "r_consonant")
 colnames(predictions) <- c("p_vowel", "p_consonant")
 predictions
+
+oda_suf_posterior <- posterior(hmm_sufs_BW$hmm, oda_sufs[1:1000])
